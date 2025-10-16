@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fractal Cósmico 1-3-9-27</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Fundo de estrelas -->
+  <canvas id="estrelas"></canvas>
+
+  <!-- Área de visualização -->
+  <div class="janela-visual">
+    <div class="container" id="container1">
+      <div class="esfera grande" id="grande"></div>
+    </div>
+    <!-- O segundo fractal é criado via JS -->
+  </div>
+
+  <!-- Painel lateral -->
+  <aside class="painel">
+    <div class="painel-topo">
+      <h1>Fractal Cósmico</h1>
+      <p class="subtitulo">Sistema duplo 1 → 3 → 9 → 27</p>
+    </div>
+
+    <div class="abas">
+      <button class="aba ativa" data-alvo="controlePrincipal">Principal</button>
+      <button class="aba" data-alvo="aparencia">Aparência</button>
+      <button class="aba" data-alvo="sistema2">Sistema 2</button>
+    </div>
+
+    <!-- Aba Principal -->
+    <div class="conteudo-aba ativa" id="controlePrincipal">
+      <h2>Velocidade e Raio</h2>
+      <label>Vel. Médias <input type="range" id="velocidadeMedias" min="0" max="2" step="0.01" value="0.5"></label>
+      <label>Vel. Pequenas <input type="range" id="velocidadePequenas" min="0" max="2" step="0.01" value="0.8"></label>
+      <label>Vel. Micros <input type="range" id="velocidadeMicros" min="0" max="2" step="0.01" value="1.2"></label>
+
+      <h2>Raios Orbitais</h2>
+      <label>Raio Médias <input type="range" id="raioMedias" min="50" max="300" value="180"></label>
+      <label>Raio Pequenas <input type="range" id="raioPequenas" min="20" max="100" value="60"></label>
+      <label>Raio Micros <input type="range" id="raioMicros" min="5" max="50" value="25"></label>
+    </div>
+
+    <!-- Aba Aparência -->
+    <div class="conteudo-aba" id="aparencia">
+      <h2>Aparência</h2>
+      <label for="tamanhoGrande">Tamanho da Esfera Principal <input type="range" id="tamanhoGrande" min="100" max="600" value="250" step="10"></label>
+      <label>Brilho <input type="range" id="brilho" min="0.1" max="2" step="0.1" value="1"></label>
+      <label>Intensidade <input type="range" id="intensidade" min="0" max="1" step="0.05" value="0.5"></label>
+      <label>Escala <input type="range" id="escala" min="0.5" max="2" step="0.1" value="1"></label>
+      <label><input type="checkbox" id="modoCor"> Modo Cintilante</label>
+      <label>Cor 1 <input type="color" id="cor1" value="#00ffff"></label>
+      <label>Cor 2 <input type="color" id="cor2" value="#ff00ff"></label>
+    </div>
+
+    <!-- Aba Sistema 2 -->
+    <div class="conteudo-aba" id="sistema2">
+      <h2>Sistema Secundário</h2>
+      <label>Velocidade Orbital <input type="range" id="velocidadeSistema" min="0.001" max="0.05" step="0.001" value="0.004"></label>
+      <label>Raio Orbital <input type="range" id="raioSistema" min="100" max="800" step="10" value="500"></label>
+    </div>
+
+    <div class="painel-footer">
+      <button id="pauseBtn">⏸️ Pausar</button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
