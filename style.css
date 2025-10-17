@@ -217,44 +217,54 @@ input[type="range"] {
 }
 
 input[type="color"] {
+  width: 32px;
+  height: 32px;
   border: none;
+  border-radius: 6px;
   background: none;
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* === Seletor de órbita === */
-select {
-  background: rgba(0, 255, 255, 0.1);
+input[type="color"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+/* === Bloco agrupado de cores === */
+.bloco-cores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.8rem 0;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+.bloco-cores h3 {
+  font-size: 0.9rem;
   color: #0ff;
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  border-radius: 6px;
-  padding: 0.3rem 0.4rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-select:hover {
-  background: rgba(0, 255, 255, 0.2);
-  border-color: rgba(0, 255, 255, 0.6);
-}
-select:focus {
-  outline: none;
-  border-color: #0ff;
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-}
-/* =========================================================
-   🌀 LINHAS ORBITAIS
-   ========================================================= */
-.linha-orbita {
-  position: absolute;
-  border: 1px dashed rgba(0, 255, 255, 0.25);
-  border-radius: 50%;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 6px #0ff;
 }
 
-.linhas-ocultas .linha-orbita {
-  opacity: 0;
+/* === Grid das caixas de cor === */
+.grade-cores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+  gap: 0.4rem;
+  justify-items: center;
+}
+
+.grade-cores label {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: #ccc;
 }
 
 /* =========================================================
@@ -284,6 +294,7 @@ select:focus {
   transform: scale(1.05);
   box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
 }
+
 
 /* =========================================================
    🌌 SCROLLBAR PERSONALIZADA
