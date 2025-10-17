@@ -47,10 +47,18 @@
     <!-- Aba Aparência -->
     <div class="conteudo-aba" id="aparencia">
       <h2>Aparência</h2>
+      <label><input type="checkbox" id="mostrarLinhas" checked>Mostrar Linhas Orbitais</label>
+      <label><input type="checkbox" id="mostrarRastro" checked>Mostrar Rastros</label>
       <label for="tamanhoGrande">Tamanho da Esfera Principal <input type="range" id="tamanhoGrande" min="100" max="600" value="250" step="10"></label>
       <label>Brilho <input type="range" id="brilho" min="0.1" max="2" step="0.1" value="1"></label>
       <label>Intensidade <input type="range" id="intensidade" min="0" max="1" step="0.05" value="0.5"></label>
       <label>Escala <input type="range" id="escala" min="0.5" max="2" step="0.1" value="1"></label>
+      <h2>Transparência</h2>
+      <label>Grande <input type="range" id="opacidadeGrande" min="0" max="1" step="0.05" value="1"></label>
+      <label>Médias <input type="range" id="opacidadeMedias" min="0" max="1" step="0.05" value="1"></label>
+      <label>Pequenas <input type="range" id="opacidadePequenas" min="0" max="1" step="0.05" value="1"></label>
+      <label>Micros <input type="range" id="opacidadeMicros" min="0" max="1" step="0.05" value="1"></label>
+
       <label><input type="checkbox" id="modoCor"> Modo Cintilante</label>
       <label>Cor 1 <input type="color" id="cor1" value="#00ffff"></label>
       <label>Cor 2 <input type="color" id="cor2" value="#ff00ff"></label>
@@ -61,6 +69,15 @@
       <h2>Sistema Secundário</h2>
       <label>Velocidade Orbital <input type="range" id="velocidadeSistema" min="0.001" max="0.05" step="0.001" value="0.004"></label>
       <label>Raio Orbital <input type="range" id="raioSistema" min="100" max="800" step="10" value="500"></label>
+
+      <h2>Centro da Órbita</h2>
+      <label>Modo de Órbita
+        <select id="modoOrbita">
+          <option value="s2-orbita-s1" selected>Sistema 2 orbita Sistema 1</option>
+          <option value="s1-orbita-s2">Sistema 1 orbita Sistema 2</option>
+          <option value="ambos-centro">Ambos orbitam o centro</option>
+        </select>
+      </label>
     </div>
 
     <div class="painel-footer">

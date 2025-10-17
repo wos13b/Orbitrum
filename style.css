@@ -1,4 +1,8 @@
-/* === Reset básico === */
+/* =========================================================
+   🌌 FRACTAL CÓSMICO — ESTILOS PRINCIPAIS
+   ========================================================= */
+
+/* === RESET & BASE === */
 * {
   margin: 0;
   padding: 0;
@@ -13,11 +17,12 @@ html, body {
   overflow: hidden;
 }
 
-/* === Fundo de estrelas (canvas) === */
+/* =========================================================
+   ✨ FUNDO DE ESTRELAS
+   ========================================================= */
 #estrelas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -25,11 +30,12 @@ html, body {
   pointer-events: none;
 }
 
-/* === Janela de visualização === */
+/* =========================================================
+   🌠 JANELA DE VISUALIZAÇÃO
+   ========================================================= */
 .janela-visual {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 75%;
   height: 100%;
   display: flex;
@@ -40,12 +46,16 @@ html, body {
   perspective: 1000px;
 }
 
-/* === Fractais === */
+/* =========================================================
+   🪐 FRACTAIS
+   ========================================================= */
 .container {
   position: relative;
   width: 400px;
   height: 400px;
   transform-style: preserve-3d;
+  animation: aparecer 1s ease forwards;
+  opacity: 0;
 }
 
 .esfera {
@@ -55,6 +65,7 @@ html, body {
   transition: background 0.5s ease, filter 0.5s ease;
 }
 
+/* === Esferas por nível === */
 .grande {
   width: 120px;
   height: 120px;
@@ -64,21 +75,18 @@ html, body {
   background: radial-gradient(circle at 40% 40%, #00ffff, #0033ff);
   box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
 }
-
 .media {
   width: 50px;
   height: 50px;
   background: radial-gradient(circle at 30% 30%, #ff00ff, #5500ff);
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
 }
-
 .pequena {
   width: 25px;
   height: 25px;
   background: radial-gradient(circle at 30% 30%, #ffcc00, #ff0066);
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
 }
-
 .micro {
   width: 12px;
   height: 12px;
@@ -86,7 +94,9 @@ html, body {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
-/* === Painel lateral === */
+/* =========================================================
+   🧭 PAINEL LATERAL
+   ========================================================= */
 .painel {
   position: fixed;
   right: 0;
@@ -101,9 +111,11 @@ html, body {
   flex-direction: column;
   z-index: 2;
   overflow: hidden;
+  animation: aparecer 1s ease forwards;
+  opacity: 0;
 }
 
-/* === Cabeçalho do painel === */
+/* === Cabeçalho === */
 .painel-topo {
   padding: 1rem;
   text-align: center;
@@ -120,40 +132,63 @@ html, body {
   opacity: 0.8;
 }
 
-/* === Abas === */
+/* =========================================================
+   🧩 ABAS
+   ========================================================= */
 .abas {
   display: flex;
   justify-content: space-around;
   padding: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .aba {
+  flex: 1;
+  text-align: center;
   background: transparent;
   border: none;
   color: #aaa;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease, text-shadow 0.3s;
   padding: 0.4rem 0.6rem;
 }
+
 .aba:hover {
   color: #fff;
 }
+
 .aba.ativa {
   color: #0ff;
   border-bottom: 2px solid #0ff;
+  text-shadow: 0 0 8px #0ff;
+  animation: brilhoCosmico 2s infinite alternate ease-in-out;
 }
 
-/* === Conteúdo das abas === */
+/* === Animação do brilho cósmico da aba ativa === */
+@keyframes brilhoCosmico {
+  0% { text-shadow: 0 0 8px #0ff; }
+  100% { text-shadow: 0 0 16px #0ff, 0 0 24px #0ff; }
+}
+
+/* =========================================================
+   💫 CONTEÚDO DAS ABAS
+   ========================================================= */
 .conteudo-aba {
   display: none;
   flex-direction: column;
   padding: 1rem;
   overflow-y: auto;
   flex: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 .conteudo-aba.ativa {
   display: flex;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .conteudo-aba h2 {
@@ -163,17 +198,22 @@ html, body {
   text-shadow: 0 0 8px #0ff;
 }
 
+/* =========================================================
+   🎚️ CONTROLES E INPUTS
+   ========================================================= */
 label {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
   margin: 0.3rem 0;
+  gap: 0.5rem;
 }
 
 input[type="range"] {
   width: 60%;
   accent-color: #0ff;
+  cursor: pointer;
 }
 
 input[type="color"] {
@@ -182,7 +222,44 @@ input[type="color"] {
   cursor: pointer;
 }
 
-/* === Rodapé do painel === */
+/* === Seletor de órbita === */
+select {
+  background: rgba(0, 255, 255, 0.1);
+  color: #0ff;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+select:hover {
+  background: rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.6);
+}
+select:focus {
+  outline: none;
+  border-color: #0ff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+/* =========================================================
+   🌀 LINHAS ORBITAIS
+   ========================================================= */
+.linha-orbita {
+  position: absolute;
+  border: 1px dashed rgba(0, 255, 255, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.linhas-ocultas .linha-orbita {
+  opacity: 0;
+}
+
+/* =========================================================
+   🪞 RODAPÉ DO PAINEL
+   ========================================================= */
 .painel-footer {
   display: flex;
   justify-content: space-around;
@@ -199,14 +276,18 @@ input[type="color"] {
   padding: 0.5rem 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-.painel-footer button:hover {
-  background: rgba(0, 255, 255, 0.2);
-  transform: scale(1.05);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
-/* === Scroll interno === */
+.painel-footer button:hover {
+  background: rgba(0, 255, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+/* =========================================================
+   🌌 SCROLLBAR PERSONALIZADA
+   ========================================================= */
 .conteudo-aba::-webkit-scrollbar {
   width: 6px;
 }
@@ -215,11 +296,20 @@ input[type="color"] {
   border-radius: 3px;
 }
 
-/* === Animação de entrada === */
-.painel, .container {
-  animation: aparecer 1s ease forwards;
-  opacity: 0;
-}
+/* =========================================================
+   🌅 ANIMAÇÃO DE ENTRADA
+   ========================================================= */
 @keyframes aparecer {
-  to { opacity: 1; transform: none; }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   📱 RESPONSIVIDADE
+   ========================================================= */
+@media (max-width: 900px) {
+  .janela-visual { width: 100%; }
+  .painel { display: none; }
 }
